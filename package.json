@@ -1,0 +1,35 @@
+{
+  "name": "vue-purify-css",
+  "version": "1.0.0",
+  "description": "Remova o CSS não utilizado de projetos Vue",
+  "main": "index.js",
+  "bin": {
+    "vpc": "./index.js",
+    "vue-purify-css": "./index.js"
+  },
+  "author": "Hallss <hallss93@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "clean-css": "^4.2.1",
+    "purify-css": "^1.2.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hallss93/vue-purify-css.git"
+  },
+  "keywords": [
+    "purify",
+    "css",
+    "vue",
+    "js",
+    "clean",
+    "javascript",
+    "fs",
+    "clean-css",
+    "purify-css"
+  ],
+  "bugs": {
+    "url": "https://github.com/hallss93/vue-purify-css/issues"
+  },
+  "homepage": "https://github.com/hallss93/vue-purify-css#readme"
+}
