@@ -36,23 +36,25 @@ function readFiles(dirname, onFileContent, onError) {
         .forEach(function (arquivo) {
             if (arquivo.match(/.vue/g))
                 fs.readFile(arquivo, 'utf-8', function (err, content) {
-                    let html = content.split("<template>")[1].split("</template>")[0]
-                    let css = content.split("<style scoped>")[1].split("</style>")[0]
-                    
-                    var output = new CleanCSS({
-                        level: {
-                            1: { specialComments: 0 },
-                            2: { removeDuplicates: true }
+                    if(content.split("<style scoped>").length>1 && content.split("<template>").length>1){
+                        let html = content.split("<template>")[1].split("</template>")[0]
+                        let css = content.split("<style scoped>")[1].split("</style>")[0]
+                        
+                        var output = new CleanCSS({
+                            level: {
+                                1: { specialComments: 0 },
+                                2: { removeDuplicates: true }
+                            }
+                        }).minify(css);
+                        purifycss(html, output.styles, {
+                            output: (arquivo.replace(".vue", "")) + ".css",
+                        })
+                        if (err) {
+                            onError(err);
+                            return;
                         }
-                    }).minify(css);
-                    purifycss(html, output.styles, {
-                        output: (arquivo.replace(".vue", "")) + ".css",
-                    })
-                    if (err) {
-                        onError(err);
-                        return;
+                        onFileContent(arquivo, content);
                     }
-                    onFileContent(arquivo, content);
                 });
         });
 }

@@ -1,6 +1,6 @@
 {
   "name": "vue-purify-css",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Remova o CSS não utilizado de projetos Vue",
   "main": "index.js",
   "bin": {
